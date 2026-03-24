@@ -39,13 +39,13 @@ export const skills = [
 export const experiences = [
   {
     id: "imai",
-    company: "Imai Co., Ltd.",
+    company: "IMAI GROUP Co., Ltd.",
     initials: "IM",
     logo: "/logo/imai_4.png",
     logoColor: "#6366f1",
     logoGradient: ["#6366f1", "#8b5cf6"],
     period: "Apr 2025 – Present",
-    location: "Bangkok, Thailand",
+    location: "Ladprao, Bangkok, Thailand",
     tech: ["Next.js", "FastAPI", "Python"],
   },
   {
@@ -56,7 +56,7 @@ export const experiences = [
     logoColor: "#6366f1",
     logoGradient: ["#6366f1", "#8b5cf6"],
     period: "Sep 2023 – Mar 2025",
-    location: "Bangkok, Thailand",
+    location: "Jatuchak, Bangkok, Thailand",
     tech: ["Next.js", "FastAPI", "Python", "Stable Diffusion", "PostgreSQL"],
   },
   {
@@ -67,7 +67,7 @@ export const experiences = [
     logoColor: "#f59e0b",
     logoGradient: ["#f59e0b", "#ef4444"],
     period: "Feb 2023 – May 2023",
-    location: "Bangkok, Thailand",
+    location: "Huaykwang, Bangkok, Thailand",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
   },
   {
@@ -78,7 +78,7 @@ export const experiences = [
     logoColor: "#10b981",
     logoGradient: ["#10b981", "#06b6d4"],
     period: "Jul 2021 – Jan 2023",
-    location: "Bangkok, Thailand",
+    location: "Bang Na, Bangkok, Thailand",
     tech: ["Unity", "C#", "WordPress", "Spark AR", "WebGL"],
   },
 ];

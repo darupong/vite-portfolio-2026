@@ -9,52 +9,66 @@ function CompanyLogo({
   logo,
   initials,
   gradient,
-  size = 48,
+  size = 56,
 }: {
   logo?: string;
   initials: string;
   gradient: [string, string];
   size?: number;
 }) {
-  if (logo) {
-    return (
-      <div
-        className="flex-shrink-0 rounded-xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center"
-        style={{ width: size, height: size }}
-      >
-        <img
-          src={logo}
-          alt={initials}
-          className="w-full h-full object-contain p-1.5"
-        />
-      </div>
-    );
-  }
-
   const id = `grad-${initials.replace(/[^a-z]/gi, "")}`;
+
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-          <stop stopColor={gradient[0]} />
-          <stop offset="1" stopColor={gradient[1]} />
-        </linearGradient>
-      </defs>
-      <rect width="48" height="48" rx="12" fill={`url(#${id})`} opacity="0.15" />
-      <rect width="48" height="48" rx="12" fill="none" stroke={`url(#${id})`} strokeWidth="1" opacity="0.4" />
-      <text
-        x="24"
-        y="24"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fill={gradient[0]}
-        fontSize={initials.length > 2 ? "13" : "15"}
-        fontWeight="700"
-        fontFamily="system-ui, sans-serif"
+    <div className="relative flex-shrink-0" style={{ width: size, height: size }}>
+      {/* Glow ring */}
+      <div
+        className="absolute inset-0 rounded-full opacity-30 blur-sm"
+        style={{
+          background: `conic-gradient(from 0deg, ${gradient[0]}, ${gradient[1]}, ${gradient[0]})`,
+        }}
+      />
+      {/* Outer gradient border */}
+      <div
+        className="absolute inset-0 rounded-full p-[1.5px]"
+        style={{
+          background: `linear-gradient(135deg, ${gradient[0]}88, ${gradient[1]}44, ${gradient[0]}22)`,
+        }}
       >
-        {initials}
-      </text>
-    </svg>
+        <div className="w-full h-full rounded-full bg-[#111]" />
+      </div>
+
+      {/* Logo content */}
+      <div className="absolute inset-[2px] rounded-full overflow-hidden bg-[#0e0e0e] flex items-center justify-center">
+        {logo ? (
+          <img
+            src={logo}
+            alt={initials}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <svg width={size - 8} height={size - 8} viewBox="0 0 48 48" fill="none">
+            <defs>
+              <linearGradient id={id} x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stopColor={gradient[0]} />
+                <stop offset="1" stopColor={gradient[1]} />
+              </linearGradient>
+            </defs>
+            <text
+              x="24"
+              y="24"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={`url(#${id})`}
+              fontSize={initials.length > 2 ? "13" : "15"}
+              fontWeight="700"
+              fontFamily="system-ui, sans-serif"
+            >
+              {initials}
+            </text>
+          </svg>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -84,21 +98,40 @@ export function Experience() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.14, ease: "easeOut" }}
               >
-                <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-6 md:p-8 hover:border-[#2a2a2a] transition-all duration-300 group">
+                <div
+                  className="relative bg-[#0d0d0d] border border-[#1e1e1e] rounded-2xl p-6 md:p-8 transition-all duration-300 group overflow-hidden"
+                  style={{
+                    boxShadow: "0 1px 0 0 #1e1e1e",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = `${exp.logoColor}33`;
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 0 1px ${exp.logoColor}22, 0 8px 32px ${exp.logoColor}0d`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = "#1e1e1e";
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = "0 1px 0 0 #1e1e1e";
+                  }}
+                >
+                  {/* Left accent bar */}
+                  <div
+                    className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full opacity-60"
+                    style={{
+                      background: `linear-gradient(to bottom, ${exp.logoGradient[0]}, ${exp.logoGradient[1]})`,
+                    }}
+                  />
+
                   {/* Header row */}
-                  <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
-                    <div className="flex-shrink-0">
-                      <CompanyLogo
-                        logo={exp.logo}
-                        initials={exp.initials}
-                        gradient={exp.logoGradient as [string, string]}
-                      />
-                    </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+                    <CompanyLogo
+                      logo={exp.logo}
+                      initials={exp.initials}
+                      gradient={exp.logoGradient as [string, string]}
+                    />
 
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
                         <div>
-                          <h3 className="text-base font-semibold text-white group-hover:text-[#818cf8] transition-colors leading-tight">
+                          <h3 className="text-base font-semibold text-white group-hover:text-white transition-colors leading-tight">
                             {role}
                           </h3>
                           <p className="text-sm font-medium mt-0.5" style={{ color: exp.logoColor }}>
@@ -107,7 +140,10 @@ export function Experience() {
                         </div>
 
                         <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                          <span className="inline-block text-xs font-mono px-2.5 py-1 rounded-md bg-[#1a1a1a] border border-[#2a2a2a] text-[#aaa] whitespace-nowrap">
+                          <span
+                            className="inline-block text-xs font-mono px-2.5 py-1 rounded-md bg-[#161616] border text-[#aaa] whitespace-nowrap"
+                            style={{ borderColor: `${exp.logoColor}22` }}
+                          >
                             {exp.period}
                           </span>
                           <span className="flex items-center gap-1 text-xs text-[#555]">
@@ -119,7 +155,12 @@ export function Experience() {
                     </div>
                   </div>
 
-                  <div className="h-px bg-[#1a1a1a] mb-5" />
+                  <div
+                    className="h-px mb-5"
+                    style={{
+                      background: `linear-gradient(to right, ${exp.logoColor}22, transparent)`,
+                    }}
+                  />
 
                   {/* Highlights */}
                   <ul className="space-y-2.5 mb-5">
@@ -145,7 +186,8 @@ export function Experience() {
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="text-xs px-2.5 py-1 rounded-lg bg-[#161616] text-[#666] border border-[#232323] hover:text-[#aaa] transition-colors"
+                        className="text-xs px-2.5 py-1 rounded-lg bg-[#111] text-[#666] border transition-colors hover:text-[#ccc]"
+                        style={{ borderColor: `${exp.logoColor}22` }}
                       >
                         {t}
                       </span>
