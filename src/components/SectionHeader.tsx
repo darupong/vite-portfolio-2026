@@ -7,12 +7,12 @@ interface SectionHeaderProps {
 export function SectionHeader({ label, title, subtitle }: SectionHeaderProps) {
   return (
     <div>
-      <p className="text-xs font-semibold text-[#6366f1] uppercase tracking-widest mb-3">
+      <p className="mb-3 text-xs font-semibold uppercase text-accent-secondary">
         {label}
       </p>
-      <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">{title}</h2>
+      <h2 className="mb-3 text-3xl font-bold text-white sm:text-4xl">{title}</h2>
       {subtitle && (
-        <p className="text-[#666] text-base max-w-xl">{subtitle}</p>
+        <p className="max-w-xl text-base leading-relaxed text-white/58">{subtitle}</p>
       )}
     </div>
   );

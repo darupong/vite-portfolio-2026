@@ -9,7 +9,7 @@ export function Skills() {
   const { t } = useTranslation();
 
   return (
-    <section id="skills" className="py-24 px-6 bg-[#0d0d0d]">
+    <section id="skills" className="section-pad bg-white/[0.025]">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label={t("skills.label")}
@@ -27,16 +27,16 @@ export function Skills() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: i * 0.1 }}
-              className="bg-[#111] border border-[#1e1e1e] rounded-xl p-5"
+              className="glass-card rounded-2xl p-5"
             >
-              <h3 className="text-xs font-semibold text-[#6366f1] uppercase tracking-widest mb-4">
+              <h3 className="mb-4 text-xs font-semibold uppercase text-accent-secondary">
                 {t(`skills.categories.${group.categoryKey}`)}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="text-sm px-3 py-1 rounded-lg bg-[#1a1a1a] text-[#ccc] border border-[#222] hover:border-[#6366f1]/40 hover:text-white transition-colors cursor-default"
+                    className="cursor-default rounded-lg border border-white/10 bg-white/[0.055] px-3 py-1 text-sm text-white/72 transition-colors hover:border-cyan-300/30 hover:text-white"
                   >
                     {item}
                   </span>

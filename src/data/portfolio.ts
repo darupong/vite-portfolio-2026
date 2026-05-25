@@ -4,8 +4,10 @@ export const personal = {
   title: "Full Stack Engineer",
   location: "Bangkok, Thailand",
   email: "darupong000@gmail.com",
-  yearsOfExperience: 3,
-  bio: "Full Stack Engineer with 3+ years of experience building scalable web applications, AI-powered tools, and immersive digital experiences. I bridge frontend craft with backend architecture — from pixel-perfect UIs to distributed APIs.",
+  yearsOfExperience: 4,
+  monthsOfExperience: 8,
+  experienceDuration: "4 yrs 8 mos",
+  bio: "Full Stack Engineer with 4+ years of experience building scalable web applications, AI-powered tools, and immersive digital experiences. I bridge frontend craft with backend architecture — from pixel-perfect UIs to distributed APIs.",
   tagline: "Building fast, thoughtful software.",
 };
 
@@ -42,8 +44,8 @@ export const experiences = [
     company: "IMAI GROUP Co., Ltd.",
     initials: "IM",
     logo: "/logo/imai_4.png",
-    logoColor: "#6366f1",
-    logoGradient: ["#6366f1", "#8b5cf6"],
+    logoColor: "#22d3ee",
+    logoGradient: ["#22d3ee", "#2563eb"],
     period: "Apr 2025 – Present",
     location: "Ladprao, Bangkok, Thailand",
     tech: ["Next.js", "FastAPI", "Python"],
@@ -53,8 +55,8 @@ export const experiences = [
     company: "Virtual Reality Co., Ltd.",
     initials: "VR",
     logo: "/logo/vr_3.png",
-    logoColor: "#6366f1",
-    logoGradient: ["#6366f1", "#8b5cf6"],
+    logoColor: "#a78bfa",
+    logoGradient: ["#a78bfa", "#7c3aed"],
     period: "Sep 2023 – Mar 2025",
     location: "Jatuchak, Bangkok, Thailand",
     tech: ["Next.js", "FastAPI", "Python", "Stable Diffusion", "PostgreSQL"],
@@ -95,7 +97,7 @@ export const projects = [
     type: "AI / Web App",
     category: "web" as ProjectCategory,
     featured: true,
-    image: "/img/looklike.jpg",
+    image: "/img/optimized/looklike.jpg",
     link: "https://looklike.ai/",
   },
   {
@@ -106,7 +108,7 @@ export const projects = [
     type: "AI Campaign",
     category: "web" as ProjectCategory,
     featured: true,
-    image: "/img/lays.png",
+    image: "/img/optimized/lays.jpg",
     link: "https://virtualrealityth.com/laysvalentines/event/",
     youtubeId: "EKeoFvslh7M",
   },
@@ -118,7 +120,7 @@ export const projects = [
     type: "AI / Web App",
     category: "web" as ProjectCategory,
     featured: true,
-    image: "/img/sathumart.png",
+    image: "/img/optimized/sathumart.jpg",
     link: "https://www.sathumart.com/",
   },
   {
@@ -129,7 +131,7 @@ export const projects = [
     type: "Web Platform",
     category: "web" as ProjectCategory,
     featured: true,
-    image: "/img/gama.webp",
+    image: "/img/optimized/gama.webp",
     link: "https://gamathailand.org/",
   },
   {
@@ -140,7 +142,7 @@ export const projects = [
     type: "3D / VR",
     category: "web" as ProjectCategory,
     featured: true,
-    image: "/img/gssd.png",
+    image: "/img/optimized/gssd.jpg",
     link: "https://13.251.159.120/wp-content/VIZPlatform/Title/1.8/index.html",
   },
   {
@@ -151,7 +153,7 @@ export const projects = [
     type: "Web / Game",
     category: "web" as ProjectCategory,
     featured: false,
-    image: "/img/hidden-ghost.png",
+    image: "/img/optimized/hidden-ghost.jpg",
     link: "https://hidden-ghost-next-website.vercel.app/",
     youtubeId: "4sYOvNpK_rU",
   },
@@ -163,7 +165,7 @@ export const projects = [
     type: "Web Platform",
     category: "web" as ProjectCategory,
     featured: false,
-    image: "/img/tomthanet.webp",
+    image: "/img/optimized/tomthanet.webp",
   },
   {
     id: "pirfloww",
@@ -173,7 +175,7 @@ export const projects = [
     type: "Web Platform",
     category: "web" as ProjectCategory,
     featured: false,
-    image: "/img/pirfloww.webp",
+    image: "/img/optimized/pirfloww.webp",
   },
   {
     id: "alps-alpine",
@@ -183,7 +185,7 @@ export const projects = [
     type: "3D / VR",
     category: "web" as ProjectCategory,
     featured: false,
-    image: "/img/alps-alpine.png",
+    image: "/img/optimized/alps-alpine.jpg",
   },
   {
     id: "siap",
@@ -193,7 +195,7 @@ export const projects = [
     type: "3D / VR",
     category: "web" as ProjectCategory,
     featured: false,
-    image: "/img/siap.png",
+    image: "/img/optimized/siap.jpg",
   },
   {
     id: "done-engineering",
@@ -203,7 +205,7 @@ export const projects = [
     type: "Web Platform",
     category: "web" as ProjectCategory,
     featured: false,
-    image: "/img/done-engineering.png",
+    image: "/img/optimized/done-engineering.jpg",
   },
 
   // ── Mobile ───────────────────────────────────────────────────────
@@ -215,7 +217,7 @@ export const projects = [
     type: "Mobile App",
     category: "mobile" as ProjectCategory,
     featured: true,
-    image: "/img/kooboon.webp",
+    image: "/img/optimized/kooboon.webp",
     appStoreUrl: "https://apps.apple.com/th/app/kooboon/id1660708706",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.kooboondating.kooboon",
   },
@@ -229,7 +231,7 @@ export const projects = [
     type: "Unity Game",
     category: "game" as ProjectCategory,
     featured: true,
-    image: "/img/zombie-evil.jpg",
+    image: "/img/optimized/zombie-evil.jpg",
     youtubeId: "zyJ7YOqFHMg",
   },
   {
@@ -240,7 +242,7 @@ export const projects = [
     type: "Unity Game",
     category: "game" as ProjectCategory,
     featured: false,
-    image: "/img/guess-number.jpeg",
+    image: "/img/optimized/guess-number.jpg",
   },
   {
     id: "ellen-raider",
@@ -250,7 +252,7 @@ export const projects = [
     type: "Unity Game",
     category: "game" as ProjectCategory,
     featured: false,
-    image: "/img/ellen-raider.jpg",
+    image: "/img/optimized/ellen-raider.jpg",
   },
   {
     id: "eclipse",
@@ -260,7 +262,7 @@ export const projects = [
     type: "Unity Game",
     category: "game" as ProjectCategory,
     featured: false,
-    image: "/img/eclipse.png",
+    image: "/img/optimized/eclipse.jpg",
   },
   {
     id: "adventure-island",
@@ -270,7 +272,7 @@ export const projects = [
     type: "Unity Game",
     category: "game" as ProjectCategory,
     featured: false,
-    image: "/img/adventure-island.png",
+    image: "/img/optimized/adventure-island.jpg",
   },
   {
     id: "into-zombieland",
@@ -280,7 +282,7 @@ export const projects = [
     type: "Unity Game",
     category: "game" as ProjectCategory,
     featured: false,
-    image: "/img/into-zombieland.jpg",
+    image: "/img/optimized/into-zombieland.jpg",
   },
 
   // ── AR & Filters ─────────────────────────────────────────────────
@@ -292,7 +294,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: true,
-    image: "/img/jaspal.webp",
+    image: "/img/optimized/jaspal.webp",
   },
   {
     id: "lazada-10years",
@@ -302,7 +304,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: false,
-    image: "/img/lazada-10years.png",
+    image: "/img/optimized/lazada-10years.jpg",
   },
   {
     id: "ccoo-disney",
@@ -312,7 +314,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: false,
-    image: "/img/ccoo-disney.png",
+    image: "/img/optimized/ccoo-disney.jpg",
   },
   {
     id: "durex-pride",
@@ -322,7 +324,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: false,
-    image: "/img/durex-pride.png",
+    image: "/img/optimized/durex-pride.jpg",
   },
   {
     id: "fifa-qatar",
@@ -332,7 +334,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: false,
-    image: "/img/fifa-qatar.png",
+    image: "/img/optimized/fifa-qatar.jpg",
   },
   {
     id: "chadchart-dance",
@@ -342,7 +344,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: false,
-    image: "/img/chadchart-dance.png",
+    image: "/img/optimized/chadchart-dance.jpg",
   },
   {
     id: "chadchart-mask",
@@ -352,7 +354,7 @@ export const projects = [
     type: "AR Filter",
     category: "ar" as ProjectCategory,
     featured: false,
-    image: "/img/chadchart-mask.png",
+    image: "/img/optimized/chadchart-mask.jpg",
   },
 
   // ── Other ─────────────────────────────────────────────────────────
@@ -364,7 +366,7 @@ export const projects = [
     type: "Creative",
     category: "other" as ProjectCategory,
     featured: false,
-    image: "/img/newport.webp",
+    image: "/img/optimized/newport.webp",
   },
   {
     id: "covid19",
@@ -374,9 +376,77 @@ export const projects = [
     type: "Creative",
     category: "other" as ProjectCategory,
     featured: false,
-    image: "/img/covid19.webp",
+    image: "/img/optimized/covid19.webp",
   },
 ];
+
+export const projectCaseStudies: Record<
+  string,
+  {
+    role: string;
+    impact: string;
+    scope: string;
+    year: string;
+    metrics: string;
+  }
+> = {
+  looklike: {
+    role: "Full Stack Developer",
+    impact: "AI portrait generation flow for consumer-facing photobooth experiences",
+    scope: "Upload flow, frontend UI, API integration, inference pipeline",
+    year: "2025",
+    metrics: "Stable Diffusion + ComfyUI pipeline",
+  },
+  lays: {
+    role: "Full Stack Developer",
+    impact: "Campaign-ready AI wallpaper generation experience",
+    scope: "Microsite, upload flow, AI generation, demo delivery",
+    year: "2025",
+    metrics: "Brand campaign microsite",
+  },
+  sathumart: {
+    role: "Full Stack Developer",
+    impact: "Cultural AI wallpaper generation platform",
+    scope: "Web app, style selection, image generation workflow",
+    year: "2025",
+    metrics: "Generative art product flow",
+  },
+  gama: {
+    role: "Full Stack Developer",
+    impact: "Association platform with member and award systems",
+    scope: "Frontend, authentication, admin workflow, backend integration",
+    year: "2025",
+    metrics: "Member subscription and awards system",
+  },
+  kooboon: {
+    role: "Frontend / Mobile Developer",
+    impact: "Cross-platform dating app experience",
+    scope: "React Native UI, app flows, real-time product screens",
+    year: "2023",
+    metrics: "iOS and Android published app",
+  },
+  gssd: {
+    role: "Interactive Web Developer",
+    impact: "3D virtual tour for international expo visitors",
+    scope: "Virtual tour, WordPress integration, PlayCanvas experience",
+    year: "2022",
+    metrics: "Global expo digital walkthrough",
+  },
+  "zombie-evil": {
+    role: "Game Developer",
+    impact: "Real-time multiplayer survival gameplay",
+    scope: "Unity gameplay, Photon networking, demo build",
+    year: "2021",
+    metrics: "Multiplayer student project",
+  },
+  jaspal: {
+    role: "AR Developer",
+    impact: "Fashion campaign AR try-on interaction",
+    scope: "Spark AR effect, face tracking, campaign filter",
+    year: "2022",
+    metrics: "Instagram AR filter",
+  },
+};
 
 // Education and certifications text lives in i18n; only static meta here
 export const educationMeta = [

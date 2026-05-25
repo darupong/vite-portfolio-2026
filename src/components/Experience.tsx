@@ -77,7 +77,7 @@ export function Experience() {
   const { t } = useTranslation();
 
   return (
-    <section id="experience" className="py-24 px-6">
+    <section id="experience" className="section-pad">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label={t("experience.label")}
@@ -99,7 +99,7 @@ export function Experience() {
                 transition={{ duration: 0.5, delay: i * 0.14, ease: "easeOut" }}
               >
                 <div
-                  className="relative bg-[#0d0d0d] border border-[#1e1e1e] rounded-2xl p-6 md:p-8 transition-all duration-300 group overflow-hidden"
+                  className="glass-card group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 md:p-8"
                   style={{
                     boxShadow: "0 1px 0 0 #1e1e1e",
                   }}
@@ -141,12 +141,12 @@ export function Experience() {
 
                         <div className="flex flex-col items-end gap-1 flex-shrink-0">
                           <span
-                            className="inline-block text-xs font-mono px-2.5 py-1 rounded-md bg-[#161616] border text-[#aaa] whitespace-nowrap"
+                            className="inline-block whitespace-nowrap rounded-md border bg-white/[0.055] px-2.5 py-1 font-mono text-xs text-white/70"
                             style={{ borderColor: `${exp.logoColor}22` }}
                           >
                             {exp.period}
                           </span>
-                          <span className="flex items-center gap-1 text-xs text-[#555]">
+                          <span className="flex items-center gap-1 text-xs text-white/42">
                             <MapPin size={10} />
                             {exp.location}
                           </span>
@@ -170,7 +170,7 @@ export function Experience() {
                         initial={{ opacity: 0, x: -10 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.4, delay: i * 0.14 + 0.2 + j * 0.07 }}
-                        className="flex gap-3 text-sm text-[#888] leading-relaxed"
+                        className="flex gap-3 text-sm leading-relaxed text-white/62"
                       >
                         <span
                           className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -186,7 +186,7 @@ export function Experience() {
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="text-xs px-2.5 py-1 rounded-lg bg-[#111] text-[#666] border transition-colors hover:text-[#ccc]"
+                        className="rounded-lg border bg-white/[0.045] px-2.5 py-1 text-xs text-white/48 transition-colors hover:text-white/80"
                         style={{ borderColor: `${exp.logoColor}22` }}
                       >
                         {t}

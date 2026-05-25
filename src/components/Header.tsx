@@ -6,11 +6,37 @@ import { cn } from "@/lib/utils";
 import { personal } from "@/data/portfolio";
 import { useStore } from "@/store/useStore";
 import { LangToggle } from "@/components/LangToggle";
+import { ThemeControls } from "@/components/ThemeControls";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const { activeSection, mobileMenuOpen, setMobileMenuOpen, lang, setLang } = useStore();
+  const {
+    activeSection,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    lang,
+    setLang,
+    themeMode,
+    themePreset,
+    accent,
+    terminalThemeMode,
+    accessibleMode,
+    setThemeMode,
+    setThemePreset,
+    setAccent,
+    setTerminalThemeMode,
+    toggleAccessibleMode,
+    toggleThemeMode,
+  } = useStore();
   const { t } = useTranslation();
+  const resolvedTheme =
+    themeMode === "system" && typeof window !== "undefined"
+      ? window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark"
+      : themeMode === "light"
+        ? "light"
+        : "dark";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,7 +57,7 @@ export function Header() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#2a2a2a]"
+          ? "border-b border-white/10 bg-[#07080d]/76 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
@@ -39,10 +65,10 @@ export function Header() {
         {/* Logo */}
         <a
           href="#about"
-          className="text-sm font-semibold tracking-wide text-white hover:text-[#6366f1] transition-colors"
+          className="text-sm font-semibold text-white transition-colors hover:text-accent-secondary"
         >
           {personal.name.split(" ")[0]}
-          <span className="text-[#6366f1]">.</span>
+          <span className="text-accent-secondary">.</span>
         </a>
 
         {/* Desktop nav */}
@@ -55,14 +81,14 @@ export function Header() {
                 href={`#${link.id}`}
                 className={cn(
                   "text-sm transition-colors relative",
-                  isActive ? "text-white" : "text-[#888888] hover:text-white"
+                  isActive ? "text-white" : "text-white/52 hover:text-white"
                 )}
               >
                 {link.label}
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-[#6366f1]"
+                    className="absolute -bottom-1 left-0 right-0 h-px bg-accent-secondary"
                   />
                 )}
               </a>
@@ -74,10 +100,24 @@ export function Header() {
         <div className="hidden md:flex items-center gap-3">
           {/* Language toggle */}
           <LangToggle lang={lang} setLang={setLang} />
+          <ThemeControls
+            themeMode={themeMode}
+            resolvedTheme={resolvedTheme}
+            themePreset={themePreset}
+            accent={accent}
+            terminalThemeMode={terminalThemeMode}
+            accessibleMode={accessibleMode}
+            setThemeMode={setThemeMode}
+            setThemePreset={setThemePreset}
+            setAccent={setAccent}
+            setTerminalThemeMode={setTerminalThemeMode}
+            toggleAccessibleMode={toggleAccessibleMode}
+            toggleThemeMode={toggleThemeMode}
+          />
 
           <a
             href={`mailto:${personal.email}`}
-            className="text-sm px-4 py-2 rounded-lg border border-[#2a2a2a] text-[#f5f5f5] hover:border-[#6366f1] hover:text-[#6366f1] transition-all duration-200"
+            className="glass-control rounded-lg px-4 py-2 text-sm text-white transition-colors hover:bg-white/12"
           >
             {t("header.hireMe")}
           </a>
@@ -86,8 +126,22 @@ export function Header() {
         {/* Mobile controls */}
         <div className="md:hidden flex items-center gap-3">
           <LangToggle lang={lang} setLang={setLang} />
+          <ThemeControls
+            themeMode={themeMode}
+            resolvedTheme={resolvedTheme}
+            themePreset={themePreset}
+            accent={accent}
+            terminalThemeMode={terminalThemeMode}
+            accessibleMode={accessibleMode}
+            setThemeMode={setThemeMode}
+            setThemePreset={setThemePreset}
+            setAccent={setAccent}
+            setTerminalThemeMode={setTerminalThemeMode}
+            toggleAccessibleMode={toggleAccessibleMode}
+            toggleThemeMode={toggleThemeMode}
+          />
           <button
-            className="text-[#f5f5f5] hover:text-[#6366f1] transition-colors"
+            className="text-white transition-colors hover:text-accent-secondary"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -103,7 +157,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a0a0a] border-b border-[#2a2a2a] overflow-hidden"
+            className="overflow-hidden border-b border-white/10 bg-[#07080d]/94 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col px-6 py-4 gap-4">
               {navItems.map((link) => (
@@ -111,14 +165,14 @@ export function Header() {
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm text-[#888888] hover:text-white transition-colors py-1"
+                  className="py-1 text-sm text-white/58 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>
               ))}
               <a
                 href={`mailto:${personal.email}`}
-                className="text-sm text-[#6366f1] pt-2 border-t border-[#2a2a2a]"
+                className="border-t border-white/10 pt-2 text-sm text-accent-secondary"
               >
                 {personal.email}
               </a>
@@ -129,4 +183,3 @@ export function Header() {
     </header>
   );
 }
-

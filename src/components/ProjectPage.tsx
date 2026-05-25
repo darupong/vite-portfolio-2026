@@ -9,10 +9,11 @@ import {
   Tag,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { projects } from "@/data/portfolio";
+import { projectCaseStudies, projects } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/store/useStore";
 import { LangToggle } from "@/components/LangToggle";
+import { ThemeControls } from "@/components/ThemeControls";
 import { personal } from "@/data/portfolio";
 
 // ─── Tech meta ────────────────────────────────────────────────────────────────
@@ -83,7 +84,29 @@ export function ProjectPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { lang, setLang } = useStore();
+  const {
+    lang,
+    setLang,
+    themeMode,
+    themePreset,
+    accent,
+    terminalThemeMode,
+    accessibleMode,
+    setThemeMode,
+    setThemePreset,
+    setAccent,
+    setTerminalThemeMode,
+    toggleAccessibleMode,
+    toggleThemeMode,
+  } = useStore();
+  const resolvedTheme =
+    themeMode === "system" && typeof window !== "undefined"
+      ? window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark"
+      : themeMode === "light"
+        ? "light"
+        : "dark";
 
   const project = projects.find((p) => p.id === id);
   const others = project
@@ -93,6 +116,28 @@ export function ProjectPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [id]);
+
+  useEffect(() => {
+    if (!project) {
+      document.title = "Project not found | Darupong Chouypu";
+      return;
+    }
+
+    const description = t(`projects.items.${project.descKey}.description`);
+    document.title = `${project.name} - ${project.type} | Darupong Chouypu`;
+
+    const metaDescription = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    metaDescription?.setAttribute("content", description);
+
+    const ogTitle = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
+    ogTitle?.setAttribute("content", `${project.name} - ${project.type}`);
+
+    const ogDescription = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
+    ogDescription?.setAttribute("content", description);
+
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    canonical?.setAttribute("href", `${window.location.origin}/projects/${project.id}`);
+  }, [project, t]);
 
   if (!project) {
     return (
@@ -105,16 +150,17 @@ export function ProjectPage() {
 
   const description = t(`projects.items.${project.descKey}.description`);
   const detail      = t(`projects.items.${project.descKey}.detail`);
+  const caseStudy = projectCaseStudies[project.id];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]">
+    <div className="page-shell min-h-screen bg-background text-foreground">
 
       {/* ── Top bar ── */}
-      <header className="sticky top-0 z-40 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#1e1e1e]">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#07080d]/86 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm text-[#666] hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
           >
             <ArrowLeft size={15} />
             <span className="hidden sm:inline">{t("projects.backToProjects")}</span>
@@ -122,13 +168,27 @@ export function ProjectPage() {
 
           <Link
             to="/"
-            className="text-sm font-semibold tracking-wide text-white hover:text-[#6366f1] transition-colors"
+            className="text-sm font-semibold text-white transition-colors hover:text-accent-secondary"
           >
-            {personal.name.split(" ")[0]}<span className="text-[#6366f1]">.</span>
+            {personal.name.split(" ")[0]}<span className="text-accent-secondary">.</span>
           </Link>
 
           <div className="flex items-center gap-3">
             <LangToggle lang={lang} setLang={setLang} />
+            <ThemeControls
+              themeMode={themeMode}
+              resolvedTheme={resolvedTheme}
+              themePreset={themePreset}
+              accent={accent}
+              terminalThemeMode={terminalThemeMode}
+              accessibleMode={accessibleMode}
+              setThemeMode={setThemeMode}
+              setThemePreset={setThemePreset}
+              setAccent={setAccent}
+              setTerminalThemeMode={setTerminalThemeMode}
+              toggleAccessibleMode={toggleAccessibleMode}
+              toggleThemeMode={toggleThemeMode}
+            />
           </div>
         </div>
       </header>
@@ -139,25 +199,28 @@ export function ProjectPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-[40vh] md:h-[55vh] bg-[#0d0d0d] overflow-hidden"
+          className="h-[40vh] w-full overflow-hidden bg-white/[0.04] md:h-[55vh]"
         >
           <img
             src={project.image}
             alt={project.name}
-            className="w-full h-full object-cover"
+            width={1440}
+            height={720}
+            decoding="async"
+            className="h-full w-full object-cover"
           />
         </motion.div>
       )}
 
       {/* ── Article body ── */}
-      <article className="max-w-3xl mx-auto px-6 py-12">
+      <article className="mx-auto max-w-3xl px-6 py-12">
 
         {/* Meta row */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="flex flex-wrap items-center gap-3 mb-6 text-xs text-[#555]"
+          className="mb-6 flex flex-wrap items-center gap-3 text-xs text-white/45"
         >
           <span className={cn("px-2.5 py-1 rounded-md border font-medium", typeColors[project.type] ?? "text-[#666] bg-[#1a1a1a] border-[#2a2a2a]")}>
             <Tag size={10} className="inline mr-1 -mt-0.5" />
@@ -184,7 +247,7 @@ export function ProjectPage() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="text-lg text-[#999] leading-relaxed mb-10 font-light"
+          className="mb-10 text-lg font-light leading-relaxed text-white/62"
         >
           {description}
         </motion.p>
@@ -197,8 +260,8 @@ export function ProjectPage() {
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 not-prose"
         >
           {/* Built with */}
-          <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-5">
-            <p className="text-xs text-[#555] uppercase tracking-widest font-semibold mb-4">
+          <div className="glass-card rounded-2xl p-5">
+            <p className="mb-4 text-xs font-semibold uppercase text-white/45">
               {t("projects.builtWith")}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -209,8 +272,8 @@ export function ProjectPage() {
           </div>
 
           {/* Links */}
-          <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-5">
-            <p className="text-xs text-[#555] uppercase tracking-widest font-semibold mb-4">
+          <div className="glass-card rounded-2xl p-5">
+            <p className="mb-4 text-xs font-semibold uppercase text-white/45">
               {t("projects.links")}
             </p>
             <div className="flex flex-col gap-2">
@@ -219,7 +282,7 @@ export function ProjectPage() {
                   href={project.link as string}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-white bg-[#6366f1] hover:bg-[#818cf8] transition-colors px-4 py-2.5 rounded-xl font-medium"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-[#080a11] transition-transform hover:-translate-y-0.5"
                 >
                   <ExternalLink size={14} />
                   {t("projects.viewWebsite")}
@@ -263,21 +326,61 @@ export function ProjectPage() {
         </motion.div>
 
         {/* ── Divider ── */}
-        <div className="h-px bg-[#1e1e1e] mb-12" />
+        <div className="mb-12 h-px bg-white/10" />
 
         {/* ── Article body ── */}
         <motion.section
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.3 }}
-          className="space-y-6 mb-12"
+          className="mb-12 space-y-6"
         >
           <h2 className="text-lg font-semibold text-white">
             {t("projects.aboutProject")}
           </h2>
-          <p className="text-[#999] leading-[1.85] text-base">
+          <p className="text-base leading-[1.85] text-white/62">
             {detail}
           </p>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.33 }}
+          className="mb-12"
+        >
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-lg font-semibold text-white">{t("projects.caseStudy.label")}</h2>
+            <span className="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs text-amber-100">
+              {t("projects.caseStudy.mockNote")}
+            </span>
+          </div>
+
+          <div className="grid gap-4">
+            {[
+              {
+                title: t("projects.caseStudy.problem"),
+                body: description,
+              },
+              {
+                title: t("projects.caseStudy.role"),
+                body: caseStudy?.role ?? t("projects.caseStudy.roleText"),
+              },
+              {
+                title: t("projects.caseStudy.process"),
+                body: caseStudy?.scope ?? t("projects.caseStudy.processText"),
+              },
+              {
+                title: t("projects.caseStudy.result"),
+                body: caseStudy ? `${caseStudy.impact} (${caseStudy.metrics}, ${caseStudy.year})` : t("projects.caseStudy.resultText"),
+              },
+            ].map((section) => (
+              <div key={section.title} className="glass-card rounded-2xl p-5">
+                <p className="mb-2 text-xs font-semibold uppercase text-accent-secondary">{section.title}</p>
+                <p className="text-sm leading-relaxed text-white/62">{section.body}</p>
+              </div>
+            ))}
+          </div>
         </motion.section>
 
         {/* ── YouTube video ── */}
@@ -307,7 +410,7 @@ export function ProjectPage() {
         )}
 
         {/* ── Divider ── */}
-        <div className="h-px bg-[#1e1e1e] mb-12" />
+        <div className="mb-12 h-px bg-white/10" />
 
         {/* ── Other projects ── */}
         <motion.section
@@ -323,24 +426,28 @@ export function ProjectPage() {
               <Link
                 key={p.id}
                 to={`/projects/${p.id}`}
-                className="group bg-[#111] border border-[#1e1e1e] rounded-xl overflow-hidden hover:border-[#2a2a2a] transition-all hover:-translate-y-0.5 duration-200"
+                className="glass-card group overflow-hidden rounded-xl transition-all duration-200 hover:-translate-y-0.5"
               >
                 {p.image && (
-                  <div className="w-full h-28 bg-[#0d0d0d] overflow-hidden">
+                  <div className="h-28 w-full overflow-hidden bg-white/[0.04]">
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                      width={240}
+                      height={112}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover opacity-70 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100"
                     />
                   </div>
                 )}
                 <div className="p-3">
-                  <p className="text-xs font-semibold text-white group-hover:text-[#6366f1] transition-colors leading-snug mb-1">
+                  <p className="mb-1 text-xs font-semibold leading-snug text-white transition-colors group-hover:text-accent-secondary">
                     {p.name}
                   </p>
                   <div className="flex flex-wrap gap-1">
                     {p.tech.slice(0, 2).map((tech) => (
-                      <span key={tech} className="text-[10px] text-[#555] bg-[#1a1a1a] px-1.5 py-0.5 rounded">
+                      <span key={tech} className="rounded bg-white/[0.055] px-1.5 py-0.5 text-[10px] text-white/45">
                         {tech}
                       </span>
                     ))}
@@ -355,7 +462,7 @@ export function ProjectPage() {
         <div className="mt-16 pb-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm text-[#555] hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm text-white/45 transition-colors hover:text-white"
           >
             <ArrowLeft size={14} />
             {t("projects.backToProjects")}

@@ -1,0 +1,357 @@
+const zh = {
+  nav: {
+    about: "关于",
+    experience: "经历",
+    projects: "项目",
+    skills: "技能",
+    contact: "联系",
+  },
+  header: {
+    hireMe: "联系合作",
+  },
+  hero: {
+    available: "开放新的合作机会",
+    title: "全栈工程师",
+    location: "泰国曼谷",
+    bio: "我从 Unity 游戏和 Instagram、TikTok AR 滤镜开始，后来转向 Web 产品，交付过虚拟导览、电商网站和约会应用。现在我专注于 AI 与产品的结合，构建 Stable Diffusion 流程和面向用户的 Web 应用。我重视从想法到上线产品的完整过程。",
+    viewProjects: "查看项目",
+    getInTouch: "联系我",
+    downloadCv: "下载简历",
+    scroll: "向下滚动",
+    terminal: {
+      guide: "互动式个人资料终端。可输入：help、whoami、location、focus、stack、shipping、contact、clear。按 Tab 可自动补全。",
+      loading: "正在加载个人资料...",
+      placeholder: "输入命令",
+      inputLabel: "终端命令输入框",
+      unknown: "未找到命令：{{command}}。输入 help 查看可用命令。",
+      permissionDenied: "{{command}}: Permission denied. 此终端仅限作品集浏览。",
+      identity: "Darupong Chouypu，全栈工程师，专注产品、AI 与 Web 系统。",
+      location: "泰国曼谷。开放远程友好团队与产品导向的机会。",
+      focus: "将想法转化为可上线的界面、API、AI 工作流和互动体验。",
+      stack: "React、Next.js、FastAPI、Python、Stable Diffusion、React Native、Unity 和 WebGL。",
+      shipping: "作品集已加载。向下滚动查看经历、案例研究和精选项目。",
+      actions: {
+        projects: "打开项目",
+        skills: "打开技能",
+        experience: "打开经历",
+        resume: "下载简历",
+        email: "发送邮件",
+      },
+      commands: {
+        help: "可用命令：\nfastfetch - Ubuntu 风格个人资料模拟\nprojects / ls - 精选项目\nskills - 技术栈\nexperience - 工作经历\nresume / cat resume.txt - 下载简历\ncontact / email - 联系邮箱\nclear - 清空终端\n\n隐藏命令：sudo, coffee",
+        projects: "projects/\n  looklike.ai\n  lays-valentines\n  sathumart\n  gama-thailand\n  kooboon\n\n点击下方按钮跳转到完整项目列表。",
+        skills: "核心技术：\n  Frontend: React, Next.js, TypeScript, Tailwind CSS\n  Backend: FastAPI, NestJS, Node.js, Python\n  AI: Stable Diffusion, ComfyUI\n  Interactive: Unity, WebGL, Spark AR",
+        experience: "总经验：4 年 8 个月，包含实习\n\n工作经历：\n  IMAI GROUP - Full Stack Developer\n  Virtual Reality Co., Ltd. - Full Stack Developer\n  Pi R Square - Frontend Developer\n  VIZ STUDIO - Game Developer & Programmer",
+        resume: "简历文件位于 /Darupong-Chouypu-CV.pdf",
+        fastfetch: "            .-/+oossssoo+/-.       neung@ubuntu\n        `:+ssssssssssssssssss+:`   ------------\n      -+ssssssssssssssssssyyssss+- Name: Darupong Chouypu\n    .ossssssssssssssssssdMMMNysssso Nickname: Neung\n   /ssssssssssshdmmNNmmyNMMMMhssss/ OS: Ubuntu 24.04 LTS x86_64\n  +ssssssssshmydMMMMMMMNddddysssss+ Host: Portfolio Workstation\n /sssssssshNMMMyhhyyyyhmNMMMNhssss/ Role: Full Stack Engineer\n.ssssssssdMMMNhsssssssssshNMMMdsss. Location: Bangkok, Thailand\n+sssshhhyNMMNyssssssssssssyNMMMyss+ Shell: zsh\nossyNMMMNyMMhsssssssssssssshmmmhso Stack: React, Next.js, FastAPI, Python\nossyNMMMNyMMhsssssssssssssshmmmhso Focus: AI products and web platforms\n+sssshhhyNMMNyssssssssssssyNMMMyss+ Status: Available for opportunities",
+        contact: "Email: darupong000@gmail.com",
+        clear: "终端已清空。",
+        sudo: "sudo: 检测到 hiring 权限。\n正在打开 offer pipeline... 开玩笑的。请联系 darupong000@gmail.com。",
+        coffee: "      )  (\n     (   ) )\n      ) ( (\n    _______)_\n .-'---------|  Coffee brewed for Neung.\n( C|         |\n '-.         |\n   '_________'\n    '-------'",
+      },
+    },
+    stats: {
+      years: "年经验",
+      projects: "已交付项目",
+      companies: "合作公司",
+    },
+  },
+  trust: {
+    label: "信任信号",
+    title: "跨产品、活动与平台的交付经验",
+    subtitle: "这个作品集中代表的品牌、团队和已交付项目概览。",
+    metricsLabel: "概览",
+    brandsLabel: "精选作品",
+    metrics: {
+      featured: "精选项目",
+      experience: "经验含实习",
+      companies: "公司",
+      focus: "当前重点",
+    },
+  },
+  experience: {
+    label: "工作经历",
+    title: "经历",
+    subtitle: "让我持续成长为工程师的公司与角色",
+    location: "地点",
+    items: {
+      imai: {
+        role: "全栈开发工程师",
+        highlights: [
+          "使用 Next.js 和 FastAPI 开发全栈 Web 应用",
+        ],
+      },
+      vr: {
+        role: "全栈开发工程师",
+        highlights: [
+          "使用 Next.js 与 Stable Diffusion 构建 AI 人脸映射平台，支持实时图像生成",
+          "开发触控式 kiosk 拍照亭系统，并支持云端图片交付",
+          "设计 FastAPI 后端接口，通过优化推理流程降低响应延迟",
+        ],
+      },
+      pirsquare: {
+        role: "前端开发工程师",
+        highlights: [
+          "使用 Next.js 构建响应式购物网站与落地页",
+          "使用 React 开发功能完整的约会应用界面",
+        ],
+      },
+      viz: {
+        role: "游戏开发与程序员（实习）",
+        highlights: [
+          "开发基于 WordPress 的虚拟导览与 3D 互动网站",
+          "构建并发布 Unity 手机游戏到 iOS 和 Android",
+          "使用 Spark AR 创建 Instagram 和 TikTok AR 滤镜",
+        ],
+      },
+    },
+  },
+  projects: {
+    label: "作品集",
+    title: "项目",
+    subtitle: "我构建过的 AI 工具、Web 平台、移动应用和互动体验",
+    showMore: "再显示 {{count}} 个",
+    filterAll: "全部",
+    filterWeb: "Web",
+    filterMobile: "移动端",
+    filterGame: "游戏",
+    filterAr: "AR 与滤镜",
+    filterOther: "其他",
+    featuredTitle: "精选案例研究",
+    featuredSubtitle: "展示产品与工程能力的精选项目",
+    archiveTitle: "浏览全部作品",
+    roleLabel: "角色",
+    roleMock: "全栈交付",
+    impactLabel: "影响",
+    impactMock: "可上线的产品流程",
+    viewWebsite: "访问网站",
+    viewProject: "查看项目",
+    watchDemo: "观看演示",
+    downloadApp: "下载应用",
+    close: "关闭",
+    backToProjects: "返回项目",
+    builtWith: "技术栈",
+    links: "链接",
+    aboutProject: "关于项目",
+    caseStudy: {
+      label: "案例研究",
+      problem: "问题",
+      role: "角色",
+      process: "过程",
+      result: "结果",
+      mockNote: "作品集草稿摘要。有准确指标后可替换为真实数据。",
+      roleText: "根据项目范围负责前端实现、系统集成和交付细节。",
+      processText: "定义用户流程，选择技术栈，构建界面，连接服务，并优化生产环境体验。",
+      resultText: "交付可用的产品体验，代码库具备可维护性，并为后续迭代保留清晰路径。",
+    },
+    otherProjects: "其他项目",
+    items: {
+      looklike: {
+        description: "AI 拍照亭图像生成器，可通过用户自拍生成不同风格的人像。",
+        detail: "Looklike.ai 支持用户上传自拍，并获得高质量 AI 风格人像。前端使用 Next.js，推理流程使用 FastAPI、Stable Diffusion 和 ComfyUI。",
+      },
+      lays: {
+        description: "Lay's Thailand 活动微站，用户可上传照片生成情人节 AI 壁纸。",
+        detail: "为 Lay's Thailand 情人节活动打造的网站。用户上传照片后，可获得由 ComfyUI 驱动的个性化 AI 情人节主题壁纸。",
+      },
+      sathumart: {
+        description: "以泰国文化美学与生成式艺术结合的 AI 象神壁纸生成平台。",
+        detail: "Sathumart 使用 AI 生成吉祥象神壁纸，用户可选择风格并获得结合泰国文化美学与扩散模型的高分辨率作品。",
+      },
+      gama: {
+        description: "寿险业务主管与财务顾问协会网站，包含订阅、登录和奖项系统。",
+        detail: "完整的协会平台，包含会员订阅、注册、身份验证和奖项追踪系统，并通过 React 后台管理。",
+      },
+      kooboon: {
+        description: "跨平台 iOS/Android 约会应用，包含实时聊天、资料匹配和位置发现。",
+        detail: "Kooboon 是一款完整的约会应用，客户端使用 React Native，后端使用 NestJS，提供实时聊天与资料匹配功能。",
+      },
+      gssd: {
+        description: "GSSD Expo 2022 的 3D 虚拟导览体验。",
+        detail: "为 Global South-South Development Expo 2022 构建的 3D 虚拟导览网站，使用 WordPress 和 PlayCanvas，让国际参会者在线探索展馆。",
+      },
+      hiddenGhost: {
+        description: "侦探悬疑手机游戏宣传网站，实习期间于 VIZ STUDIO 开发。",
+        detail: "The Hidden Ghost 的宣传网站。该移动游戏使用 Unity 开发，灵感来自 Phasmophobia，并发布于 iOS 和 Android。",
+      },
+      tomthanet: {
+        description: "泰国时尚品牌 Tom Thanet 的电商网站。",
+        detail: "在 Pi R Square 任职期间，使用 Next.js 和 Tailwind CSS 为 Tom Thanet 构建的响应式购物网站。",
+      },
+      pirfloww: {
+        description: "Flowwsquare 子域名落地页项目。",
+        detail: "在 Pi R Square 任职期间，使用 Next.js 和 React 为 Flowwsquare 构建的子域名落地页。",
+      },
+      alpsAlpine: {
+        description: "Alps Alpine 展厅的互动 3D 虚拟导览网站。",
+        detail: "实习期间使用 WordPress 和自定义 WebGL viewer，为 Alps Alpine 展厅构建的虚拟导览体验。",
+      },
+      siap: {
+        description: "S.I. ASIA PACIFIC CO., LTD. 的 3D 虚拟导览网站。",
+        detail: "实习期间使用 WordPress 和 PlayCanvas，为 S.I. ASIA PACIFIC 构建的互动 3D 虚拟导览。",
+      },
+      doneEngineering: {
+        description: "Done Engineering and Service Co., Ltd. 企业虚拟导览网站。",
+        detail: "实习期间为 Done Engineering and Service Co., Ltd. 构建的虚拟导览网站。",
+      },
+      zombieEvil: {
+        description: "使用 Unity 和 Photon 构建的多人僵尸生存游戏。",
+        detail: "Zombie Evil 是一款实时多人游戏，玩家可在线组队抵御僵尸波次，作为学生项目开发。",
+      },
+      guessNumber: {
+        description: "使用 Unity 和 Photon Networking 构建的多人猜数字游戏。",
+        detail: "实时多人猜数字游戏，玩家在线竞争并猜出正确数字。",
+      },
+      ellenRaider: {
+        description: "使用 Unity 构建的 2D 动作平台游戏。",
+        detail: "Ellen Raider 是作为学生项目开发的 2D 动作平台游戏，主角需要穿越关卡并战斗。",
+      },
+      eclipse: {
+        description: "2021 年学生时期使用 Unity 开发的 2D 游戏。",
+        detail: "Eclipse 是本科期间使用 Unity 开发的 2D 游戏项目。",
+      },
+      adventureIsland: {
+        description: "2020 年学生项目，经典 Adventure Island 的 Unity 重制版。",
+        detail: "本科期间使用 Unity 开发的经典 Adventure Island 重制项目。",
+      },
+      intoZombieland: {
+        description: "本科早期使用 Unity 构建的 2D 僵尸生存游戏。",
+        detail: "Into The Zombieland 是本科期间创建的早期 2D Unity 游戏项目。",
+      },
+      jaspal: {
+        description: "Jaspal x Orla Kiely 时尚合作项目的 Instagram AR 滤镜。",
+        detail: "使用 Spark AR Studio 为 Jaspal x Orla Kiely 合作系列创建的 Instagram AR 滤镜。",
+      },
+      lazada10years: {
+        description: "Lazada 十周年活动 Instagram AR 滤镜。",
+        detail: "为 Lazada 十周年活动创建的 AR 滤镜，可在 Instagram 和 Facebook 使用。",
+      },
+      ccooDisney: {
+        description: "CC-OO x Disney 合作项目的 TikTok AR 滤镜。",
+        detail: "使用 Spark AR Studio 创建并部署到 TikTok 和 Instagram 的 AR 滤镜。",
+      },
+      durexPride: {
+        description: "Durex Come with Pride 活动 Instagram AR 滤镜。",
+        detail: "为 Durex Thailand Pride Month 活动创建的 Instagram AR 滤镜。",
+      },
+      fifaQatar: {
+        description: "FIFA World Cup Qatar 2022 赛事结果猜测 AR 滤镜。",
+        detail: "世界杯主题 AR 滤镜，用户可通过面部追踪效果猜测比赛结果。",
+      },
+      chadchartDance: {
+        description: "曼谷市长竞选活动的 TikTok AR 舞蹈滤镜。",
+        detail: "为 Chadchart Sittipunt 曼谷市长竞选创建的病毒式 AR 舞蹈滤镜。",
+      },
+      chadchartMask: {
+        description: "曼谷市长竞选活动的 Instagram AR 面具滤镜。",
+        detail: "为 Chadchart Sittipunt 竞选活动创建的 Instagram AR 面具滤镜。",
+      },
+      portfolio3d: {
+        description: "使用 Three.js 和 WebGL 构建的实验性 3D 作品集网站。",
+        detail: "2023 年作为创意探索构建的实验性 3D 互动作品集。",
+      },
+      covid19: {
+        description: "关于 COVID-19 预防的 2D 动画学生项目。",
+        detail: "本科期间制作的 COVID-19 防疫主题 2D 动画短片。",
+      },
+    },
+  },
+  skills: {
+    label: "技术栈",
+    title: "技能",
+    subtitle: "我日常使用的技术与工具",
+    categories: {
+      frontend: "前端",
+      backend: "后端",
+      mobileDesktop: "移动端与桌面端",
+      aiCreative: "AI 与创意",
+      dataCloud: "数据与云",
+      tools: "工具",
+    },
+  },
+  education: {
+    label: "背景",
+    title: "教育",
+    subtitle: "学术背景与语言认证",
+    universityLabel: "大学",
+    universityName: "兰实大学，曼谷",
+    certsLabel: "认证",
+    certsTitle: "语言与能力",
+    focusLabel: "学术重点",
+    focusTitle: "支撑的能力方向",
+    focusItems: [
+      "信息系统",
+      "企业架构",
+      "软件工程",
+      "游戏开发",
+      "互动系统",
+    ],
+    bridgeTitle: "连接到实际工作",
+    bridgeText:
+      "这些学术基础支撑我在产品系统、后端架构、AI 工作流和互动软件体验方面的实践。",
+    publicationLabel: "发表研究",
+    publicationTitle: "硕士期间发表",
+    publication: {
+      name: "Causal Factors Influencing Behavior to Buy Games on Website PlayStation Store in Bangkok and Its Vicinity",
+      journal: "Journal of Multidisciplinary in Humanities and Social Sciences",
+      tierLabel: "期刊等级",
+      tier: "TCI Tier 1",
+      issue: "Vol. 8 No. 4 (2025): July - August 2025",
+      modelLabel: "方法",
+      resultLabel: "解释力",
+      summary:
+        "基于 315 名受访者的定量研究，使用验证性因素分析与结构方程模型。该模型可解释 PlayStation Store 游戏购买行为 88% 的变异。",
+      viewArticle: "查看文章",
+    },
+    items: [
+      {
+        institution: "兰实大学",
+        degree: "信息科学硕士",
+        field: "社交媒体技术（MIS）",
+        period: "2022 - 2024",
+        highlights: [
+          "信息系统方向的研究生研究",
+          "关注企业软件架构",
+        ],
+      },
+      {
+        institution: "兰实大学",
+        degree: "理学学士",
+        field: "信息技术",
+        period: "2018 - 2022",
+        highlights: [
+          "荣誉毕业",
+          "专注软件工程与游戏开发",
+        ],
+      },
+    ],
+    certifications: [
+      {
+        name: "RSU-PET B2",
+        framework: "CEFR",
+        issuer: "兰实大学",
+        description: "英语能力 - 中高级",
+        year: "2023",
+      },
+    ],
+  },
+  contact: {
+    label: "联系",
+    title: "一起合作",
+    subtitle:
+      "我目前开放新的机会。无论你有项目想法，还是只是想打个招呼，都欢迎联系我。",
+    location: "泰国曼谷",
+    availabilityLabel: "状态",
+    availabilityValue: "开放新的机会",
+    rolesLabel: "偏好角色",
+    rolesValue: "全栈、AI 产品、Web 平台",
+    responseLabel: "回复",
+    responseValue: "通常 1-2 个工作日内回复",
+    cv: "简历",
+  },
+  footer: {
+    built: "使用 Vite 8 · React · Tailwind CSS 构建",
+  },
+} as const;
+
+export default zh;
