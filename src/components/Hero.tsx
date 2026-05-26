@@ -13,6 +13,8 @@ import { personal } from "@/data/portfolio";
 const HeroTerminal = lazy(() =>
   import("@/components/HeroTerminal").then((module) => ({ default: module.HeroTerminal }))
 );
+import { ProceduralSynth } from "./ProceduralSynth";
+import { WorldVisitorMap } from "./WorldVisitorMap";
 
 const container = {
   hidden: {},
@@ -154,12 +156,17 @@ export function Hero() {
                 </a>
               </div>
             </motion.div>
+
+            <div className="mt-8">
+              <ProceduralSynth />
+            </div>
           </div>
 
-          <motion.div variants={item} className="hidden content-center lg:grid lg:pl-4">
-            <Suspense fallback={<div className="glass-card h-[28.4rem] rounded-2xl" />}>
+          <motion.div variants={item} className="hidden flex-col justify-center gap-4 lg:flex lg:pl-4 min-w-0">
+            <Suspense fallback={<div className="glass-card h-[28.4rem] rounded-2xl animate-pulse" />}>
               <HeroTerminal />
             </Suspense>
+            <WorldVisitorMap />
           </motion.div>
         </motion.div>
       </div>

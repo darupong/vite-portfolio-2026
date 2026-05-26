@@ -452,6 +452,7 @@ export const projectCaseStudies: Record<
 export const educationMeta = [
   { shortName: "RSU", degreeAbbr: "MSc" },
   { shortName: "RSU", degreeAbbr: "BSc" },
+  { shortName: "SSM", degreeAbbr: "HS" },
 ];
 
 export const navLinks = [

@@ -54,6 +54,7 @@ export function Contact() {
             <div className="flex flex-wrap justify-center gap-3">
               <a
                 href={`mailto:${personal.email}`}
+                onClick={() => window.dispatchEvent(new CustomEvent("trigger-confetti"))}
                 className="group inline-flex items-center gap-3 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#080a11] transition-transform hover:-translate-y-0.5"
               >
                 <Mail size={16} />
@@ -64,6 +65,7 @@ export function Contact() {
                 href="https://github.com/darupong"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.dispatchEvent(new CustomEvent("trigger-confetti"))}
                 className="glass-control inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/12"
               >
                 <Github size={16} />
@@ -72,6 +74,7 @@ export function Contact() {
               <a
                 href="/Darupong-Chouypu-CV.pdf"
                 download
+                onClick={() => window.dispatchEvent(new CustomEvent("trigger-confetti"))}
                 className="glass-control inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/12"
               >
                 <Download size={16} />

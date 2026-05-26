@@ -153,7 +153,13 @@ export function ProjectPage() {
   const caseStudy = projectCaseStudies[project.id];
 
   return (
-    <div className="page-shell min-h-screen bg-background text-foreground">
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="page-shell min-h-screen bg-background text-foreground"
+    >
 
       {/* ── Top bar ── */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-[#07080d]/86 backdrop-blur-xl">
@@ -469,6 +475,6 @@ export function ProjectPage() {
           </button>
         </div>
       </article>
-    </div>
+    </motion.div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef, ReactNode, MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Layers, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -41,6 +41,81 @@ function ProjectSkeleton({ featured = false }: { featured?: boolean }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function ProjectCard({
+  to,
+  ariaLabel,
+  children,
+}: {
+  to: string;
+  ariaLabel: string;
+  children: ReactNode;
+}) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [spotlightX, setSpotlightX] = useState(50);
+  const [spotlightY, setSpotlightY] = useState(50);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: MouseEvent<HTMLAnchorElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+
+    const rX = -(y - yc) / 14; // Max 12 deg
+    const rY = (x - xc) / 20;  // Max 18 deg
+
+    setRotateX(rX);
+    setRotateY(rY);
+    setSpotlightX((x / rect.width) * 100);
+    setSpotlightY((y / rect.height) * 100);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <Link
+      ref={cardRef}
+      to={to}
+      aria-label={ariaLabel}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: isHovered
+          ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.025, 1.025, 1.025)`
+          : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+        transition: isHovered ? "none" : "all 0.5s cubic-bezier(0.25, 1, 0.5, 1)",
+        transformStyle: "preserve-3d",
+      }}
+      className="glass-card group relative flex h-full flex-col overflow-hidden rounded-2xl shadow-lg border border-white/10"
+    >
+      {/* Glossy radial light reflection spotlight layer */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"
+        style={{
+          background: `radial-gradient(circle 220px at ${spotlightX}% ${spotlightY}%, rgba(255, 255, 255, 0.085), transparent 75%)`,
+          mixBlendMode: "overlay",
+        }}
+      />
+      {children}
+    </Link>
   );
 }
 
@@ -183,10 +258,9 @@ export function Projects() {
                     exit={{ opacity: 0, scale: 0.97 }}
                     transition={{ duration: 0.35, delay: index * 0.05 }}
                   >
-                    <Link
+                    <ProjectCard
                       to={`/projects/${project.id}`}
-                      aria-label={`${t("projects.viewProject")}: ${project.name}`}
-                      className="glass-card group relative flex h-full flex-col overflow-hidden rounded-2xl transition-transform duration-200 hover:-translate-y-1"
+                      ariaLabel={`${t("projects.viewProject")}: ${project.name}`}
                     >
                       {project.image && (
                         <div className="h-56 w-full overflow-hidden bg-white/[0.04]">
@@ -250,7 +324,7 @@ export function Projects() {
                           ))}
                         </div>
                       </div>
-                    </Link>
+                    </ProjectCard>
                   </motion.article>
                 ))}
           </AnimatePresence>
@@ -271,10 +345,9 @@ export function Projects() {
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3, delay: index * 0.03 }}
                     >
-                      <Link
+                      <ProjectCard
                         to={`/projects/${project.id}`}
-                        aria-label={`${t("projects.viewProject")}: ${project.name}`}
-                        className="glass-card group relative flex h-full flex-col overflow-hidden rounded-2xl transition-transform duration-200 hover:-translate-y-1"
+                        ariaLabel={`${t("projects.viewProject")}: ${project.name}`}
                       >
                         {project.image && (
                           <div className="h-40 w-full overflow-hidden bg-white/[0.04]">
@@ -322,7 +395,7 @@ export function Projects() {
                             ))}
                           </div>
                         </div>
-                      </Link>
+                      </ProjectCard>
                     </motion.article>
                   ))}
             </AnimatePresence>

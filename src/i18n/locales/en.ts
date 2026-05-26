@@ -324,6 +324,16 @@ const en = {
           "Specialized in software engineering & game development",
         ],
       },
+      {
+        institution: "Surasakmontree School, Bangkok",
+        degree: "High School Diploma",
+        field: "Science-Mathematics Program",
+        period: "2015 – 2018",
+        highlights: [
+          "Focused on foundational science and advanced mathematics",
+          "Participated in computer programming and science exhibitions",
+        ],
+      },
     ],
     certifications: [
       {

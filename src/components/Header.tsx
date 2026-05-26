@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Volume2, VolumeX } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { personal } from "@/data/portfolio";
@@ -21,12 +21,14 @@ export function Header() {
     accent,
     terminalThemeMode,
     accessibleMode,
+    soundEnabled,
     setThemeMode,
     setThemePreset,
     setAccent,
     setTerminalThemeMode,
     toggleAccessibleMode,
     toggleThemeMode,
+    toggleSoundEnabled,
   } = useStore();
   const { t } = useTranslation();
   const resolvedTheme =
@@ -100,6 +102,17 @@ export function Header() {
         <div className="hidden md:flex items-center gap-3">
           {/* Language toggle */}
           <LangToggle lang={lang} setLang={setLang} />
+          
+          {/* Sound toggle */}
+          <button
+            type="button"
+            onClick={toggleSoundEnabled}
+            className="glass-control inline-flex h-9 w-9 items-center justify-center rounded-lg text-white/70 transition-colors hover:bg-white/12 hover:text-white"
+            aria-label={soundEnabled ? "Mute sound effects" : "Unmute sound effects"}
+          >
+            {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          </button>
+
           <ThemeControls
             themeMode={themeMode}
             resolvedTheme={resolvedTheme}
@@ -126,6 +139,17 @@ export function Header() {
         {/* Mobile controls */}
         <div className="md:hidden flex items-center gap-3">
           <LangToggle lang={lang} setLang={setLang} />
+          
+          {/* Sound toggle */}
+          <button
+            type="button"
+            onClick={toggleSoundEnabled}
+            className="glass-control inline-flex h-9 w-9 items-center justify-center rounded-lg text-white/70 transition-colors hover:bg-white/12 hover:text-white"
+            aria-label={soundEnabled ? "Mute sound effects" : "Unmute sound effects"}
+          >
+            {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          </button>
+
           <ThemeControls
             themeMode={themeMode}
             resolvedTheme={resolvedTheme}

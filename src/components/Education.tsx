@@ -53,10 +53,13 @@ export function Education() {
             <div className="relative space-y-8">
               <div className="absolute bottom-3 left-[0.62rem] top-3 w-px bg-gradient-to-b from-cyan-300/50 via-white/12 to-transparent" />
               {eduItems.map((edu, index) => {
-                const isMaster =
-                  edu.degree.split(" ")[0] === "Master" ||
-                  edu.degree === "วิทยาศาสตรมหาบัณฑิต" ||
-                  edu.degree === "信息科学硕士";
+                const getDegreeAbbr = (degree: string) => {
+                  const d = degree.toLowerCase();
+                  if (d.includes("master") || d.includes("มหาบัณฑิต") || d.includes("硕士")) return "MSc";
+                  if (d.includes("bachelor") || d.includes("บัณฑิต") || d.includes("学士")) return "BSc";
+                  if (d.includes("high school") || d.includes("มัธยม") || d.includes("高中") || d.includes("高校")) return "HS";
+                  return "Edu";
+                };
 
                 return (
                   <motion.article
@@ -76,7 +79,7 @@ export function Education() {
                           {edu.period}
                         </span>
                         <span className="degree-badge rounded-md border border-cyan-300/20 bg-cyan-300/10 px-2 py-0.5 text-xs font-semibold text-cyan-100">
-                          {isMaster ? "MSc" : "BSc"}
+                          {getDegreeAbbr(edu.degree)}
                         </span>
                       </div>
 

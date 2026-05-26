@@ -1,16 +1,20 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { TrustSignals } from "@/components/TrustSignals";
 import { Experience } from "@/components/Experience";
+import { AISandbox } from "@/components/AISandbox";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { Education } from "@/components/Education";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { SeasonalBackground } from "@/components/SeasonalBackground";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import { useStore } from "@/store/useStore";
+import { useStore, getSeasonalPreset } from "@/store/useStore";
+import { playHolidayChime } from "@/lib/sounds";
 
 const ProjectPage = lazy(() =>
   import("@/components/ProjectPage").then((module) => ({ default: module.ProjectPage }))
@@ -19,11 +23,19 @@ const ProjectPage = lazy(() =>
 function PortfolioPage() {
   useActiveSection();
   return (
-    <div className="page-shell min-h-screen bg-background text-foreground">
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="page-shell min-h-screen bg-background text-foreground"
+    >
+      <SeasonalBackground />
       <Header />
       <main>
         <Hero />
         <TrustSignals />
+        <AISandbox />
         <Experience />
         <Projects />
         <Skills />
@@ -31,12 +43,12 @@ function PortfolioPage() {
         <Contact />
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 
 function App() {
-  const { themeMode, themePreset, accent, accessibleMode } = useStore();
+  const { themeMode, themePreset, accent, accessibleMode, soundEnabled } = useStore();
   const [systemTheme, setSystemTheme] = useState<"dark" | "light">("dark");
   const resolvedTheme = themeMode === "system" ? systemTheme : themeMode;
 
@@ -48,12 +60,23 @@ function App() {
     return () => media.removeEventListener("change", updateSystemTheme);
   }, []);
 
+  // Play chime sound when preset resolves
+  useEffect(() => {
+    if (!soundEnabled) return;
+    const resolvedPreset = themePreset === "auto" ? (getSeasonalPreset() ?? "midnight") : themePreset;
+    playHolidayChime(resolvedPreset);
+  }, [themePreset, soundEnabled]);
+
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("theme-light", resolvedTheme === "light");
     root.classList.toggle("theme-dark", resolvedTheme === "dark");
     root.dataset.themeMode = themeMode;
-    root.dataset.themePreset = themePreset;
+    
+    // Resolve "auto" preset dynamically to seasonal festival or midnight fallback
+    const resolvedPreset = themePreset === "auto" ? (getSeasonalPreset() ?? "midnight") : themePreset;
+    root.dataset.themePreset = resolvedPreset;
+    
     root.dataset.accent = accent;
     root.dataset.accessible = String(accessibleMode);
     root.style.colorScheme = resolvedTheme;
