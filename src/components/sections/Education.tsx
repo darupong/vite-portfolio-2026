@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, FileText, GraduationCap, Languages } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { SectionHeader } from "./SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useInView } from "@/hooks/useInView";
 
 export function Education() {

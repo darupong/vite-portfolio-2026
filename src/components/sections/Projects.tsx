@@ -4,7 +4,7 @@ import { ArrowUpRight, Layers, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { projectCaseStudies, projects, type ProjectCategory } from "@/data/portfolio";
-import { SectionHeader } from "./SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 

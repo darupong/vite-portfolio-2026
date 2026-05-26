@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { experiences, personal, projects } from "@/data/portfolio";
-import { SectionHeader } from "@/components/SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useInView } from "@/hooks/useInView";
 
 const featuredBrands = [

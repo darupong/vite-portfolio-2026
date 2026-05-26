@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { personal } from "@/data/portfolio";
 import { useStore } from "@/store/useStore";
-import { LangToggle } from "@/components/LangToggle";
-import { ThemeControls } from "@/components/ThemeControls";
+import { LangToggle } from "@/components/ui/LangToggle";
+import { ThemeControls } from "@/components/ui/ThemeControls";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);

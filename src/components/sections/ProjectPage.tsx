@@ -12,8 +12,8 @@ import { useTranslation } from "react-i18next";
 import { projectCaseStudies, projects } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/store/useStore";
-import { LangToggle } from "@/components/LangToggle";
-import { ThemeControls } from "@/components/ThemeControls";
+import { LangToggle } from "@/components/ui/LangToggle";
+import { ThemeControls } from "@/components/ui/ThemeControls";
 import { personal } from "@/data/portfolio";
 
 // ─── Tech meta ────────────────────────────────────────────────────────────────

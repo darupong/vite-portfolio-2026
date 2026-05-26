@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { skills } from "@/data/portfolio";
-import { SectionHeader } from "./SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useInView } from "@/hooks/useInView";
 
 export function Skills() {

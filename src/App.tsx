@@ -1,23 +1,23 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { TrustSignals } from "@/components/TrustSignals";
-import { Experience } from "@/components/Experience";
-import { AISandbox } from "@/components/AISandbox";
-import { Projects } from "@/components/Projects";
-import { Skills } from "@/components/Skills";
-import { Education } from "@/components/Education";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { SeasonalBackground } from "@/components/SeasonalBackground";
+import { Header } from "@/components/layout/Header";
+import { Hero } from "@/components/sections/Hero";
+import { TrustSignals } from "@/components/sections/TrustSignals";
+import { Experience } from "@/components/sections/Experience";
+import { AISandbox } from "@/features/ai-sandbox/AISandbox";
+import { Projects } from "@/components/sections/Projects";
+import { Skills } from "@/components/sections/Skills";
+import { Education } from "@/components/sections/Education";
+import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/layout/Footer";
+import { SeasonalBackground } from "@/components/layout/SeasonalBackground";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useStore, getSeasonalPreset } from "@/store/useStore";
 import { playHolidayChime } from "@/lib/sounds";
 
 const ProjectPage = lazy(() =>
-  import("@/components/ProjectPage").then((module) => ({ default: module.ProjectPage }))
+  import("@/components/sections/ProjectPage").then((module) => ({ default: module.ProjectPage }))
 );
 
 function PortfolioPage() {

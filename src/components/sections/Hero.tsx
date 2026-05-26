@@ -11,10 +11,10 @@ import { useTranslation } from "react-i18next";
 import { personal } from "@/data/portfolio";
 
 const HeroTerminal = lazy(() =>
-  import("@/components/HeroTerminal").then((module) => ({ default: module.HeroTerminal }))
+  import("@/features/terminal/HeroTerminal").then((module) => ({ default: module.HeroTerminal }))
 );
-import { ProceduralSynth } from "./ProceduralSynth";
-import { WorldVisitorMap } from "./WorldVisitorMap";
+import { ProceduralSynth } from "@/features/synth/ProceduralSynth";
+import { WorldVisitorMap } from "@/features/visitor-map/WorldVisitorMap";
 
 const container = {
   hidden: {},
